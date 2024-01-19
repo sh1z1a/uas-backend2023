@@ -6,6 +6,9 @@ const express = require("express");
 // membuat object router
 const router = express.Router();
 
+// membuat definisi rute
+const NewsController = require("./path/to/NewsController")
+
 /**
  * Membuat routing
  */
