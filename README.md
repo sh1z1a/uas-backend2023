@@ -1,3 +1,5 @@
+Folder UAS saya terdapat pada branch master ya Pak.
+
 # Final Project UAS
 
 Building News RESTful API with Express.js
