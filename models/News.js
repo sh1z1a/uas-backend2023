@@ -1,5 +1,6 @@
 // import database
-const db = require("../config/database")
+const db = require("../config/database");
+
 // membuat class News
 class News {
   // buat fungsi all
@@ -39,7 +40,7 @@ class News {
     await new Promise((resolve, reject) => {
       const sql = "UPDATE news SET ? WHERE id = ?";
       db.query(sql, [data, id], (err, results) =>{
-        resolve(results);
+        return resolve(results);
       });
     });
 
@@ -52,8 +53,8 @@ class News {
   static delete(id){
     return new Promise((resolve, reject)=>{
       const sql = "DELETE FROM news WHERE id = ?";
-      db.query(sql, id, (err, rsults) => {
-        resolve(results);
+      db.query(sql, id, (err, results) => {
+        return resolve(results);
       })
     })
   }
@@ -62,7 +63,19 @@ class News {
   static async find(id){
     return new Promise((resolve, reject)=>{
       const sql = "SELECT * FROM news WHERE id = ?";
-      db.query(sql, id, (err, rsults) => {
+      db.query(sql, id, (err, results) => {
+        // destructuring array
+        const [news] = results;
+        resolve(results);
+      })
+    })
+  }
+
+  // mencari detail data news
+  static async search(title){
+    return new Promise((resolve, reject)=>{
+      const sql = "SELECT * FROM news WHERE title = ?";
+      db.query(sql, title, (err, results) => {
         // destructuring array
         const [news] = results;
         resolve(results);
@@ -71,7 +84,7 @@ class News {
   }
 
   // mendapatkan news dengan category sports
-  static async find(category){ 
+  static findByCategory(category){ 
     return new Promise((resolve, reject) => {
       const sql = "SELECT * FROM news WHERE category = 'sports' ";
       db.query(sql, [category], (err, results) => {
@@ -85,7 +98,7 @@ class News {
   }
 
    // mendapatkan news dengan category finance
-   static async find(category){ 
+   static findByCategory(category){ 
     return new Promise((resolve, reject) => {
       const sql = "SELECT * FROM news WHERE category = 'finance' ";
       db.query(sql, [category], (err, results) => {
@@ -99,7 +112,7 @@ class News {
   }
 
    // mendapatkan news dengan category automative
-   static async find(category){ 
+   static async findByCategory(category){ 
     return new Promise((resolve, reject) => {
       const sql = "SELECT * FROM news WHERE category = 'automative' ";
       db.query(sql, [category], (err, results) => {
@@ -111,11 +124,6 @@ class News {
       });
     });
   }
-
-
-
-  
-
 
 }
 

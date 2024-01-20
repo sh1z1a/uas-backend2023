@@ -1,17 +1,19 @@
 // import NewsController
+const NewsController = require("../controllers/NewsController");
 
 // import express
 const express = require("express");
+const app = express();
+const port = 3000;
 
 // membuat object router
 const router = express.Router();
 
-// membuat definisi rute
-const NewsController = require("./path/to/NewsController")
 
 /**
  * Membuat routing
  */
+
 router.get("/", (req, res) => {
   res.send("Hello News API Express");
 });
@@ -24,11 +26,11 @@ router.get("/news", NewsController.index);
 // Menambahkan data berita 
 router.post("/news", NewsController.store);
 
-// Mengupdate data berita 
+// Mengupdate data berita  
 router.put("/news/:id", NewsController.update);
 
 // Menghapus data berita 
-router.deletet("/news/:id", NewsController.destroy);
+router.delete("/news/:id", NewsController.destroy);
 
 // Mendapatkan deatail data berita 
 router.get("/news/:id", NewsController.show);
@@ -40,7 +42,7 @@ router.get("/news/search/:title", NewsController.search);
 router.get("/news/category/sport", NewsController.sport);
 
 // Mendapatkan data berita dengan kategori finance
-router.get("/news/category/finance", NewsController.finande);
+router.get("/news/category/finance", NewsController.finance);
 
 // Mendapatkan data berita dengan kategori automative
 router.get("/news/category/automative", NewsController.automative);
@@ -48,3 +50,4 @@ router.get("/news/category/automative", NewsController.automative);
 
 // export router
 module.exports = router;
+ 
