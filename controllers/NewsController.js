@@ -161,7 +161,7 @@ class NewsController {
   static async sports(req, res){
     // Menggunakan fungsi find untuk mendapatkan data sport dari database
     const sportsData = await NewsController.find('sports')
-    const totalSports = sport.length;
+    const totalSports = sportsData.length;
 
     // jika data berhasil ditemukan
     if(totalSports > 0){
@@ -187,7 +187,7 @@ class NewsController {
   static async finance(req, res){
     // Menggunakan fungsi find untuk mendapatkan data sport dari database
     const financeData = await NewsController.find('finance')
-    const totalFinance = finance.length;
+    const totalFinance = financeData.length;
 
     // jika data berhasil ditemukan
     if(totalFinance > 0){
@@ -213,7 +213,7 @@ class NewsController {
   static async automative(req, res){
     // Menggunakan fungsi find untuk mendapatkan data sport dari database
     const automativeData = await NewsController.find('automative')
-    const totalAutomative = automative.length;
+    const totalAutomative = automativeData.length;
 
     // jika data berhasil ditemukan
     if(totalAutomative > 0){
